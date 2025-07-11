@@ -7,10 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -20,6 +17,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/api/book")
 @RequiredArgsConstructor
+@CrossOrigin
 public class ListController {
 
     private final BookRepository bookRepository;
@@ -27,6 +25,8 @@ public class ListController {
     @GetMapping("/list")
     public ResponseEntity<?> listActiveBooks() {
         List<Book> activeBooks = bookRepository.findByStatus(Book.Status.ON);
+
+        System.out.println("\n\n" + activeBooks + "\n\n"); // Recebe 'author'
 
         if (activeBooks.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
@@ -36,6 +36,8 @@ public class ListController {
         List<Map<String, Object>> bookList = activeBooks.stream()
                 .map(this::convertToBookInfo)
                 .collect(Collectors.toList());
+
+        System.out.println("\n\n" + bookList + "\n\n"); // Já não tem 'author'
 
         return ResponseEntity.ok(
                 ApiResponse.success("200", "Lista de livros ativos carregada com sucesso.", bookList)

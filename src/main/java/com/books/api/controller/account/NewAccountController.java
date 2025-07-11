@@ -9,10 +9,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCrypt;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.Map;
@@ -21,6 +18,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/account")
 @RequiredArgsConstructor
+@CrossOrigin
 public class NewAccountController {
 
     private final AccountRepository accountRepo;

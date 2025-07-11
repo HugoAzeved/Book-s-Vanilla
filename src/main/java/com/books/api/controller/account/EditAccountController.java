@@ -15,6 +15,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/account")
 @RequiredArgsConstructor
+@CrossOrigin
 public class EditAccountController {
 
     private final JwtUtil jwtUtil;

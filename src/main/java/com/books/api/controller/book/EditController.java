@@ -16,6 +16,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/book")
 @RequiredArgsConstructor
+@CrossOrigin
 public class EditController {
 
     private final BookRepository bookRepository;

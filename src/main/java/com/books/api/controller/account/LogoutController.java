@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/account")
 @RequiredArgsConstructor
+@CrossOrigin
 public class LogoutController {
 
     private final CookieUtil cookieUtil;

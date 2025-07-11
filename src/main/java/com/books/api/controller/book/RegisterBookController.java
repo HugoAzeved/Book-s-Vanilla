@@ -12,10 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -25,6 +22,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/book")
 @RequiredArgsConstructor
+@CrossOrigin
 public class RegisterBookController {
 
     private final JwtUtil jwtUtil;
@@ -35,6 +33,8 @@ public class RegisterBookController {
     @PostMapping("/register")
     @Transactional // Garante que a operação de salvamento seja atômica
     public ResponseEntity<?> registerBook(@RequestBody Map<String, Object> requestBody, HttpServletRequest httpRequest) {
+
+        /*
         // 1. Autenticação e Autorização do Usuário
         Account loggedUser = jwtUtil.getLoggedUser(httpRequest, accountRepository);
         if (loggedUser == null || loggedUser.getStatus() != Account.Status.ON) {
@@ -47,6 +47,7 @@ public class RegisterBookController {
             return ResponseEntity.status(HttpStatus.FORBIDDEN)
                     .body(ApiResponse.error("403", "Acesso negado. Requer role de ADMIN ou OPERATOR para cadastrar livros."));
         }
+          */
 
         // 2. Extrair e Validar Dados da Requisição (Manual)
         String title = (String) requestBody.get("title");

@@ -3,6 +3,7 @@ package com.books.api.model;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.time.LocalDateTime;
 
@@ -12,6 +13,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@CrossOrigin
 public class Contact {
 
     @Id

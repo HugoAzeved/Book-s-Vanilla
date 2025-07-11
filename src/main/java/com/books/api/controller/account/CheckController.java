@@ -18,6 +18,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/account")
 @RequiredArgsConstructor
+@CrossOrigin
 public class CheckController {
 
     private final CookieUtil cookieUtil;
