@@ -26,7 +26,7 @@ public class ListController {
     public ResponseEntity<?> listActiveBooks() {
         List<Book> activeBooks = bookRepository.findByStatus(Book.Status.ON);
 
-        System.out.println("\n\n" + activeBooks + "\n\n"); // Recebe 'author'
+        // System.out.println("\n\n" + activeBooks + "\n\n"); // Recebe 'author'
 
         if (activeBooks.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
@@ -37,7 +37,7 @@ public class ListController {
                 .map(this::convertToBookInfo)
                 .collect(Collectors.toList());
 
-        System.out.println("\n\n" + bookList + "\n\n"); // Já não tem 'author'
+        // System.out.println("\n\n" + bookList + "\n\n"); // Já não tem 'author'
 
         return ResponseEntity.ok(
                 ApiResponse.success("200", "Lista de livros ativos carregada com sucesso.", bookList)
